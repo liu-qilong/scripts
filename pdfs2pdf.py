@@ -1,6 +1,6 @@
 """
 usage example:
-python pdfs2pdf.py --pdf-folder temp/ --output-path output/combined.pdf
+python pdfs2pdf.py --pdf-folder input/ --output-path output/combined.pdf
 """
 import os
 import argparse
@@ -39,7 +39,7 @@ def get_toc_tree(tree, keys):
 if __name__ == '__main__':
     # get pdf folder from command line arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument('--pdf-folder', '-f', help="The path to the pdf folder.", type=str, default='temp/')
+    parser.add_argument('--pdf-folder', '-f', help="The path to the pdf folder.", type=str, default='input/')
     parser.add_argument('--output-path', '-o', help="The output file path of the combined pdf.", type=str, default='output/combined.pdf')
     args = parser.parse_args()
 
