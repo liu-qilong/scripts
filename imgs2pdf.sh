@@ -14,7 +14,7 @@ while getopts "p:o:" opt; do
 done
 
 # find image files
-files=$(find "$input_folder" -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" \))
+files=$(find "$input_folder" -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" \) | sort -V)
 
 if [ -z "$files" ]; then
     echo "no .png or .jpg files found in the input folder"
