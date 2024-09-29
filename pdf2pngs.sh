@@ -1,8 +1,21 @@
-# to use this script, make sure that you have installed imagemagick
-# and place the pdf file in temp/
+# require imagemagick
+# init
+export input_folder="input"
+export output_folder="output"
+export file_name="file"
+export width=800
 
-read -p "enter the name of the file (without extension): " file
-read -p "enter pixel width of the output (default=800): " width
-width=${width:-800}
+# parse options
+while getopts "p:o:n:w" opt; do
+    case $opt in
+        p) input_folder=$OPTARG ;;
+        o) output_folder=$OPTARG ;;
+        n) file_name=$OPTARG ;;
+        w) width=$OPTARG ;;
+        \?) echo "Usage: $0 -p <input-folder> -o <output-folder> -n <file-name-wo-extention> -w <width-in-pixels>"
+            exit 1 ;;
+    esac
+done
 
-convert -density 300 "temp/$file.pdf" -resize "$width""x" "temp/$file.png"
+# convert pdf to png images
+convert -density 300 "$input_folder/$file_name.pdf" -resize "$width""x" "$output_folder/$file_name.png"
