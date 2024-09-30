@@ -40,8 +40,11 @@ if __name__ == '__main__':
     # get pdf folder from command line arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('--pdf-folder', '-f', help="The path to the pdf folder.", type=str, default='input/')
-    parser.add_argument('--output-path', '-o', help="The output file path of the combined pdf.", type=str, default='output/combined.pdf')
+    parser.add_argument('--output-path', '-o', help="The output file path of the combined pdf. If set as 'auto', the pdf will be outputted to the input folder with the input folder's name", type=str, default='output/combined.pdf')
     args = parser.parse_args()
+
+    if args.output_path == 'auto':
+        args.output_path = os.path.join(args.pdf_folder, os.path.basename(os.path.normpath(args.pdf_folder)) + '.pdf')
 
     # get pdf files
     pdf_ls = []
