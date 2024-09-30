@@ -24,5 +24,12 @@ if [ "$output_folder" == "auto" ]; then
     output_folder=$input_folder
 fi
 
-# convert pdf to png images
-magick convert -density 300 "$input_folder/$file_name.pdf" -resize "$width""x" "$output_folder/$file_name.png"
+# convert pdf to temporary png images
+magick convert -density 300 "$input_folder/$file_name.pdf" -resize "$width""x" "$output_folder/temp.png"
+
+# convert png images to single png image
+# sort the temporary png images naturally and combine them into a single png image
+magick convert $(ls "$output_folder"/temp*.png | sort -V) -append "$output_folder/$file_name.png"
+
+# remove temporary png images
+rm $output_folder/temp*.png
