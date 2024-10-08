@@ -54,4 +54,4 @@ if __name__ == '__main__':
         args.output_path = args.file_path.replace(
             os.path.basename(args.file_path), 'numbered.pdf')
 
-    add_page_numbers(args.file_path, args.output_path, page_number_color=colors.lightgreen)
+    add_page_numbers(args.file_path, args.output_path, page_number_color=colors.red)
