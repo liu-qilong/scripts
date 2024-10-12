@@ -1,5 +1,5 @@
 export drive_path='/Volumes/BACKUP'
-export icloud_path='/Users/knpob/Library/Mobile Documents/com~apple~CloudDocs/Territory'
+export icloud_path='/Users/knpob/Documents'
 export local_path='/Users/knpob/Territory'
 export obsidian_path='/Users/knpob/Library/Mobile Documents/iCloud~md~obsidian/Documents'
 
@@ -9,7 +9,7 @@ export red='\033[0;31m'
 export nocolor='\033[0m'
 
 # backup local drive files
-for folder in 'Marx' 'Kolmo' 'Nietzsche' 'Humboldt'
+for folder in 'Marx' 'Kolmo' 'Humboldt'
 do
     export src="$local_path/$folder"
     export des="$drive_path/Territory"
@@ -18,7 +18,7 @@ do
 done
 
 # backup cloud drive files
-for folder in 'Achilles' 'Odyssey'
+for folder in 'Achilles' 'Odyssey' 'Nietzsche' 
 do
     export src="$icloud_path/$folder"
     export des="$drive_path/Territory"
