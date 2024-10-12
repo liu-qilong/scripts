@@ -5,6 +5,7 @@ python pdfs2pdf.py --pdf-folder input/ --output-path output/combined.pdf
 import os
 import argparse
 from PyPDF2 import PdfMerger
+from natsort import natsorted
 
 
 def push_toc_tree(tree, keys, merger):
@@ -49,7 +50,8 @@ if __name__ == '__main__':
     # get pdf files
     pdf_ls = []
 
-    for root, _, files in os.walk(args.pdf_folder):
+    for root, _, files in natsorted(os.walk(args.pdf_folder)):
+        files = natsorted(files)
         for file in files:
             if file.endswith('.pdf'):
                 path = os.path.join(root, file)
