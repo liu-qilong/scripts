@@ -10,7 +10,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from PyPDF2 import PdfWriter, PdfReader
 
-def add_page_numbers(input_pdf, output_pdf, page_number_color=colors.black):
+def add_page_numbers(input_pdf, output_pdf, page_number_color=colors.darkred, background_color=colors.Color(255, 255, 255, alpha=0.5)):
     input_pdf_reader = PdfReader(open(input_pdf, "rb"))
     output_pdf_writer = PdfWriter()
     total_pages = len(input_pdf_reader.pages)
@@ -19,15 +19,25 @@ def add_page_numbers(input_pdf, output_pdf, page_number_color=colors.black):
     # and calculate font size based its size
     page = input_pdf_reader.pages[0]
     page_width = page.mediabox.width
-    font_size = float(page_width) * 0.02  # 2% of the smaller dimension
+    font_size = float(page_width) * 0.025  # 2% of the smaller dimension
+    text_height = font_size
 
     for page_num in range(total_pages):
-        # create a PDF with the page number
         packet = io.BytesIO()
         can = canvas.Canvas(packet, pagesize=letter)
+
+        # calculate text width
+        page_num_str = f'{page_num + 1}/{total_pages}'
+        text_width = can.stringWidth(page_num_str, "Courier", font_size)
+        
+        # add rectangle background
+        can.setFillColor(background_color)
+        can.rect(10 - 2, 10 - 2, text_width + 4, text_height, fill=1, stroke=0)
+
+        # add page number
         can.setFillColor(page_number_color)  # set the color of the page number
         can.setFont("Courier", font_size)  # Set the font size
-        can.drawString(10, 10, f'{page_num + 1}/{total_pages}')  # position the page number
+        can.drawString(10, 10, page_num_str)  # position the page number
         can.save()
 
         # move to the beginning of the StringIO buffer
@@ -54,4 +64,4 @@ if __name__ == '__main__':
         args.output_path = args.file_path.replace(
             os.path.basename(args.file_path), 'numbered.pdf')
 
-    add_page_numbers(args.file_path, args.output_path, page_number_color=colors.red)
+    add_page_numbers(args.file_path, args.output_path)
