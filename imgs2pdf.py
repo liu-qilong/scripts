@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 usage example:
 python imgs2pdf.py 

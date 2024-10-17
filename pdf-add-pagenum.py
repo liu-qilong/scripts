@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 usage example:
 python pdf-add-pagenum.py --pdf-path temp/file.pdf --output-path output/numbered.pdf

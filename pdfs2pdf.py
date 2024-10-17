@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 usage example:
 python pdfs2pdf.py --pdf-folder input/ --output-path output/combined.pdf
