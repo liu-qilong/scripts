@@ -1,9 +1,7 @@
 drive_path='/Volumes/BACKUP'
-icloud_path='/Users/knpob/Documents'
 local_path='/Users/knpob/Territory'
-obsidian_path='/Users/knpob/Library/Mobile Documents/iCloud~md~obsidian/Documents'
-notes_path='/Users/knpob/Desktop/notes'
-beancount_path='/Users/knpob/Library/Mobile Documents/iCloud~is~workflow~my~workflows/Documents/beancount'
+icloud_path='/Users/knpob/Documents'
+app_path='/Users/knpob/Library/Mobile Documents'
 
 # colors
 green='\033[0;32m'
@@ -28,18 +26,11 @@ do
     rsync -av --delete --exclude '*-nosync' "$src" "$des"
 done
 
-# backup notes
-des="$drive_path/Desktop"
-echo "backup $green$notes_path$nocolor >> $green$des$nocolor"
-rsync -av --delete --exclude '*-nosync' "$notes_path" "$des"
-
-# backup beancount
-des="$drive_path/Desktop"
-echo "backup $green$beancount_path$nocolor >> $green$des$nocolor"
-rsync -av --delete --exclude '*-nosync' "$beancount_path" "$des"
-
-# backup obsidian vaults
-src="$obsidian_path/"
-des="$drive_path/Obsidian"
-echo "backup $green$src$nocolor >> $green$des$nocolor"
-rsync -av --delete --exclude '*-nosync' "$src" "$des"
+# backup app data
+for folder in "iCloud~md~obsidian" "iCloud~com~apple~iBooks" "iCloud~is~workflow~my~workflows"
+do
+    src="$app_path/$folder/Documents/"
+    des="$drive_path/App/$folder"
+    echo "backup $green$src$nocolor >> $green$des$nocolor"
+    rsync -av --delete --exclude '*-nosync' "$src" "$des"
+done
