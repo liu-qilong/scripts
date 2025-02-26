@@ -10,7 +10,7 @@ red='\033[0;31m'
 nocolor='\033[0m'
 
 # backup local drive files
-for folder in 'Weber' 'Kolmo' 'Humboldt'
+for folder in 'Weber' 'Hinton' 'Humboldt'
 do
     src="$local_path/$folder"
     des="$drive_path/Territory"
