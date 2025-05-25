@@ -7,9 +7,9 @@ $directory\
 [](fg:#DA627D bg:#FCA17D)\
 $git_branch\
 $git_status\
+[](fg:#FCA17D bg:#86BBD8)\
 $conda\
 $python\
-[](fg:#FCA17D bg:#86BBD8)\
 $c\
 $elixir\
 $elm\
@@ -102,13 +102,13 @@ format = '[$all_status$ahead_behind ]($style)'
 
 [conda]
 symbol = ""
-style = "bg:#FCA17D"
-format = '[$symbol $environment ]($style)'
+style = "bg:#86BBD8"
+format = '[ $symbol $environment ]($style)'
 
 [python]
 symbol = " "
-style = "bg:#FCA17D"
-format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+style = "bg:#86BBD8"
+format = '[ ${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
 [golang]
 symbol = " "
