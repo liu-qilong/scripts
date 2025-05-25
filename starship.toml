@@ -26,7 +26,8 @@ $docker_context\
 $conda\
 [](fg:#06969A bg:#33658A)\
 $time\
-[ ](fg:#33658A)\
+[ ](fg:#33658A)
+$character
 """
 
 # Disable the blank line at the start of the prompt
@@ -159,3 +160,7 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#33658A"
 format = '[ ♥ $time ]($style)'
+
+[character]
+success_symbol = "[->](bold cyan)"
+error_symbol = "[->](bold red)"
