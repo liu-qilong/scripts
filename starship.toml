@@ -8,7 +8,6 @@ $directory\
 $git_branch\
 $git_status\
 [](fg:#FCA17D bg:#86BBD8)\
-$conda\
 $python\
 $c\
 $elixir\
@@ -24,6 +23,7 @@ $rust\
 $scala\
 [](fg:#86BBD8 bg:#06969A)\
 $docker_context\
+$conda\
 [](fg:#06969A bg:#33658A)\
 $time\
 [ ](fg:#33658A)\
@@ -100,11 +100,6 @@ format = '[ $symbol $branch ]($style)'
 style = "bg:#FCA17D"
 format = '[$all_status$ahead_behind ]($style)'
 
-[conda]
-symbol = ""
-style = "bg:#86BBD8"
-format = '[ $symbol $environment ]($style)'
-
 [python]
 symbol = " "
 style = "bg:#86BBD8"
@@ -153,6 +148,11 @@ format = '[ $symbol ($version) ]($style)'
 symbol = " "
 style = "bg:#86BBD8"
 format = '[ $symbol ($version) ]($style)'
+
+[conda]
+symbol = ""
+style = "bg:#06969A"
+format = '[ $symbol $environment ]($style)'
 
 [time]
 disabled = false
