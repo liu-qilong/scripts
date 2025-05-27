@@ -26,7 +26,8 @@ $docker_context\
 $conda\
 [](fg:#06969A bg:#33658A)\
 $time\
-[ ](fg:#33658A)
+[ ](fg:#33658A)\
+$cmd_duration
 $character
 """
 
@@ -164,3 +165,8 @@ format = '[ ♥ $time ]($style)'
 [character]
 success_symbol = "[->](bold cyan)"
 error_symbol = "[->](bold red)"
+
+[cmd_duration]
+min_time = 0
+show_milliseconds = true
+format = "[$duration](cyan)"
